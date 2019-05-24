@@ -1,11 +1,14 @@
+require_relative('./bar_tab')
+
 class Room
-  attr_reader :number, :guests, :songs, :capacity
+  attr_reader :number, :guests, :songs, :capacity, :bar_tab
 
   def initialize(number, capacity)
     @number = number
     @guests = []
     @songs = []
     @capacity = capacity
+    @bar_tab = BarTab.new
   end
 
   def check_in(guest)
@@ -30,5 +33,9 @@ class Room
     else
       @songs << song
     end
+  end
+
+  def add_to_bar_tab(amount)
+    @bar_tab.add_to_bar_tab(amount)
   end
 end

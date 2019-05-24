@@ -8,6 +8,8 @@ require_relative('../song')
 class KaraokeVenueTest < Minitest::Test
 
   def setup
+    @song1 = Song.new("Welcome to the Jungle")
+    @song2 = Song.new("Highway to Hell")
     @room1 = Room.new(1, 10)
     @room2 = Room.new(2, 15)
     @room3 = Room.new(3, 3)
@@ -15,6 +17,9 @@ class KaraokeVenueTest < Minitest::Test
     @rooms = [@room1, @room2, @room3]
     @venue1 = KaraokeVenue.new("Ace Karaoke", @rooms, 20)
     @venue2 = KaraokeVenue.new("Karaoke Cave", [], 10)
+
+    @guest1 = Guest.new("Harry", 100, @song1)
+    @guest2 = Guest.new("Danny", 200, @song2)
   end
 
   def test_get_venue_name
@@ -29,5 +34,10 @@ class KaraokeVenueTest < Minitest::Test
     @venue2.add_room(@room1)
     @venue2.add_room(@room2)
     assert_equal([@room1, @room2], @venue2.rooms)
+  end
+
+  def test_add_entry_fee_to_tab_of_room
+    @venue1.add_entry_fee_to_bar_tab_of_room(@room2)
+    assert_equal(20, @room2.bar_tab.tab)
   end
 end

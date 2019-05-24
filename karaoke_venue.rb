@@ -14,4 +14,8 @@ class KaraokeVenue
       @rooms << room
     end
   end
+
+  def add_entry_fee_to_bar_tab_of_room(room)
+    room.add_to_bar_tab(@entry_fee)
+  end
 end
