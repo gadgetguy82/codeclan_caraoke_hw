@@ -11,4 +11,8 @@ class SongTest < Minitest::Test
   def test_get_song_title
     assert_equal("Eye of the Tiger", @song1.title)
   end
+
+  def test_get_song_lyrics
+    assert_equal("Verse, Chorus", @song1.lyrics)
+  end
 end

@@ -15,4 +15,9 @@ class BarTabTest < Minitest::Test
   def test_add_to_bar_tab
     assert_equal(20, @bar_tab.add_to_bar_tab(20))
   end
+
+  def test_clear_tab
+    @bar_tab.add_to_bar_tab(30)
+    assert_equal(0, @bar_tab.clear_tab)
+  end
 end

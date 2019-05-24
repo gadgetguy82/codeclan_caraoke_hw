@@ -8,4 +8,8 @@ class BarTab
   def add_to_bar_tab(amount)
     @tab += amount
   end
+
+  def clear_tab
+    @tab = 0
+  end
 end

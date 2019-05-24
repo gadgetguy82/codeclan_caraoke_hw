@@ -3,15 +3,21 @@ require('minitest/rg')
 require_relative('../room')
 require_relative('../guest')
 require_relative('../song')
+require_relative('../drink')
 
 class RoomTest < Minitest::Test
 
   def setup
     @song1 = Song.new("Perfect Day")
     @song2 = Song.new("Uptown Girl")
+
+    @drink1 = Drink.new("Whisky", 10)
+    @drink2 = Drink.new("Rum", 6)
+
     @room1 = Room.new(1, 10)
     @room2 = Room.new(2, 15)
     @room3 = Room.new(3, 3)
+
     @guest1 = Guest.new("Fred", 100, @song2)
     @guest2 = Guest.new("Kim", 20, @song1)
     @guest3 = Guest.new("Rachel", 50, @song1)
@@ -70,5 +76,10 @@ class RoomTest < Minitest::Test
 
   def test_guest_cheer__sad
     assert_equal("Aww", @guest1.cheer(@room2))
+  end
+
+  def test_guest_can_order_drink
+    @guest1.order_drink(@drink1, @room2)
+    assert_equal(10, @room2.bar_tab.tab)
   end
 end
