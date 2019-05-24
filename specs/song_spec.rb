@@ -8,7 +8,7 @@ class SongTest < Minitest::Test
     @song1 = Song.new("Eye of the Tiger")
   end
 
-  def test_get_song_name
+  def test_get_song_title
     assert_equal("Eye of the Tiger", @song1.title)
   end
 end
