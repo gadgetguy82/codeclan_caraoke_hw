@@ -13,6 +13,6 @@ class SongTest < Minitest::Test
   end
 
   def test_get_song_lyrics
-    assert_equal("Verse, Chorus", @song1.lyrics)
+    assert_equal("Verse, chorus", @song1.lyrics)
   end
 end

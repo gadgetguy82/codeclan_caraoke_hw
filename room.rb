@@ -1,7 +1,7 @@
 require_relative('./bar_tab')
 
 class Room
-  attr_reader :number, :guests, :songs, :capacity, :bar_tab
+  attr_reader :number, :guests, :songs
 
   def initialize(number, capacity)
     @number = number
@@ -33,6 +33,10 @@ class Room
     else
       @songs << song
     end
+  end
+
+  def get_tab
+    return @bar_tab.tab
   end
 
   def add_to_bar_tab(amount)

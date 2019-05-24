@@ -11,8 +11,8 @@ class RoomTest < Minitest::Test
     @song1 = Song.new("Perfect Day")
     @song2 = Song.new("Uptown Girl")
 
-    @drink1 = Drink.new("Whisky", 10)
-    @drink2 = Drink.new("Rum", 6)
+    @drink1 = Drink.new("Whisky", 10, 2)
+    @drink2 = Drink.new("Rum", 6, 3)
 
     @room1 = Room.new(1, 10)
     @room2 = Room.new(2, 15)
@@ -62,10 +62,6 @@ class RoomTest < Minitest::Test
     assert_equal([@song1, @song2], @room1.songs)
   end
 
-  def test_get_capacity_of_room
-    assert_equal(10, @room1.capacity)
-  end
-
   def test_check_guest_into_room_when_room_full
     assert_equal("Room 3 is full, Fred cannot be checked in.", @room3.check_in(@guest1))
   end
@@ -80,6 +76,6 @@ class RoomTest < Minitest::Test
 
   def test_guest_can_order_drink
     @guest1.order_drink(@drink1, @room2)
-    assert_equal(10, @room2.bar_tab.tab)
+    assert_equal(10, @room2.get_tab)
   end
 end

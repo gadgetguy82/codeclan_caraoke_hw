@@ -1,10 +1,13 @@
+require_relative('./till')
+
 class KaraokeVenue
   attr_reader :name, :rooms, :entry_fee
 
-  def initialize(name, rooms, entry_fee)
+  def initialize(name, rooms, entry_fee, start_cash)
     @name = name
     @rooms = rooms
     @entry_fee = entry_fee
+    @till = Till.new(start_cash)
   end
 
   def add_room(room)
