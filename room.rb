@@ -1,21 +1,26 @@
 class Room
-  attr_reader :number, :guests, :songs
+  attr_reader :number, :guests, :songs, :capacity
 
-  def initialize(number)
+  def initialize(number, capacity)
     @number = number
     @guests = []
     @songs = []
+    @capacity = capacity
   end
 
   def check_in(guest)
-    @guests << guest
+    if @guests.length < @capacity
+      @guests << guest
+    else
+      return "Room #{@number} is full, #{guest.name} cannot be checked in."
+    end
   end
 
   def check_out(guest)
     if @guests.include?(guest)
       @guests.delete(guest)
     else
-      return "#{guest.name} is not in this room"
+      return "#{guest.name} is not in room #{@number}"
     end
   end
 
