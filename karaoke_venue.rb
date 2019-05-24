@@ -1,7 +1,7 @@
 require_relative('./till')
 
 class KaraokeVenue
-  attr_reader :name, :rooms, :entry_fee
+  attr_reader :name, :rooms, :entry_fee, :till
 
   def initialize(name, rooms, entry_fee, start_cash)
     @name = name

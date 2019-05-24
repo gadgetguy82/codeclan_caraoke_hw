@@ -20,6 +20,8 @@ class KaraokeVenueTest < Minitest::Test
 
     @guest1 = Guest.new("Harry", 100, @song1)
     @guest2 = Guest.new("Danny", 200, @song2)
+
+    @room2.check_in(@guest1)
   end
 
   def test_get_venue_name
@@ -37,7 +39,13 @@ class KaraokeVenueTest < Minitest::Test
   end
 
   def test_add_entry_fee_to_tab_of_room
-    @venue1.add_entry_fee_to_bar_tab_of_room(@room2)
-    assert_equal(20, @room2.get_tab)
+    @venue1.add_entry_fee_to_bar_tab_of_room(@venue1.rooms[1])
+    assert_equal(20, @venue1.rooms[1].get_tab)
+  end
+
+  def test_settle_tab
+    @venue1.add_entry_fee_to_bar_tab_of_room(@venue1.rooms[1])
+    @venue1.rooms[1].settle_tab(@venue1.till)
+    assert_equal(520, @venue1.till.cash_flow)
   end
 end

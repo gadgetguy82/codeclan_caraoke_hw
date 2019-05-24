@@ -50,4 +50,9 @@ class Room
       return "Service refused, you don't have enough cash to cover it."
     end
   end
+
+  def settle_tab(till)
+    till.add_sale(get_tab)
+    @bar_tab.clear_tab
+  end
 end
