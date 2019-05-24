@@ -40,6 +40,22 @@ class Guest
     end
   end
 
+  # order_food will only add the food price to the room's bar_tab
+  def order_food(food, room)
+    if room.get_tab + food.price <= @wallet
+      room.add_to_bar_tab(food.price)
+      @drunk_level += food.sober_level
+    end
+  end
+
+  # buy_food immediately pays for food
+  def buy_food(food)
+    if food.price <= @wallet
+      @wallet -= food.price
+      @drunk_level += food.sober_level
+    end
+  end
+
   def sing_song(song)
     if @drunk_level > 5
       slur_song(song)

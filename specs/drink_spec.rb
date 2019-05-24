@@ -5,18 +5,18 @@ require_relative('../drink')
 class DrinkTest < Minitest::Test
 
   def setup
-    @drink1 = Drink.new("Vodka", 5, 2)
+    @drink = Drink.new("Vodka", 5, 2)
   end
 
   def test_get_drink_name
-    assert_equal("Vodka", @drink1.name)
+    assert_equal("Vodka", @drink.name)
   end
 
   def test_get_drink_price
-    assert_equal(5, @drink1.price)
+    assert_equal(5, @drink.price)
   end
 
   def test_get_alcohol_level
-    assert_equal(2, @drink1.alcohol_level)
+    assert_equal(2, @drink.alcohol_level)
   end
 end

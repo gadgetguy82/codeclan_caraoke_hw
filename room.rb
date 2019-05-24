@@ -39,7 +39,15 @@ class Room
     return @bar_tab.tab
   end
 
+  def get_total_cash_of_guests
+    @guests.reduce(0) {|total, guest| total + guest.wallet}
+  end
+
   def add_to_bar_tab(amount)
-    @bar_tab.add_to_bar_tab(amount)
+    if get_total_cash_of_guests >= get_tab + amount
+      @bar_tab.add_to_bar_tab(amount)
+    else
+      return "Service refused, you don't have enough cash to cover it."
+    end
   end
 end

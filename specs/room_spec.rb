@@ -4,6 +4,7 @@ require_relative('../room')
 require_relative('../guest')
 require_relative('../song')
 require_relative('../drink')
+require_relative('../food')
 
 class RoomTest < Minitest::Test
 
@@ -13,6 +14,8 @@ class RoomTest < Minitest::Test
 
     @drink1 = Drink.new("Whisky", 10, 2)
     @drink2 = Drink.new("Rum", 6, 3)
+
+    @food1 = Food.new("Burger", 4, 3)
 
     @room1 = Room.new(1, 10)
     @room2 = Room.new(2, 15)
@@ -77,5 +80,14 @@ class RoomTest < Minitest::Test
   def test_guest_can_order_drink
     @guest1.order_drink(@drink1, @room2)
     assert_equal(10, @room2.get_tab)
+  end
+
+  def test_guest_can_order_food
+    @guest1.order_food(@food1, @room2)
+    assert_equal(4, @room2.get_tab)
+  end
+
+  def test_get_total_cash_of_guests
+    assert_equal(80, @room3.get_total_cash_of_guests)
   end
 end
