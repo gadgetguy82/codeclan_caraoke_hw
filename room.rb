@@ -25,6 +25,10 @@ class Room
   end
 
   def add_song(song)
-    @songs << song
+    if song.is_a?(Array)
+      @songs += song
+    else
+      @songs << song
+    end
   end
 end

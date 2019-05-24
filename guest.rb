@@ -5,4 +5,12 @@ class Guest
     @name = name
     @wallet = wallet
   end
+
+  def pay_fee(amount)
+    if amount <= @wallet
+      @wallet -= amount
+    else
+      return "#{@name} cannot pay entry fee"
+    end
+  end
 end
