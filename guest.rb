@@ -64,6 +64,7 @@ class Guest
     end
   end
 
+  # once a guests drunk_level exceeds a certain limit whenever sing_song is called the lyrics will be altered
   def slur_song(song)
     slurred_lyrics = song.lyrics
     (1 + rand(@drunk_level)).times do
